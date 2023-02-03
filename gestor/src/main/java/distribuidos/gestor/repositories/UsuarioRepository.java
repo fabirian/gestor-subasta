@@ -10,9 +10,11 @@ package distribuidos.gestor.repositories;
  */
 
 import org.springframework.stereotype.Service;
-import distribuidos.gestor.model.AdministradorDTO;
-import distribuidos.gestor.model.ProductoDTO;
-import distribuidos.gestor.model.UsuarioDTO;
+
+import distribuidos.gestor.services.DTO.AdministradorDTO;
+import distribuidos.gestor.services.DTO.ProductoDTO;
+import distribuidos.gestor.services.DTO.UsuarioDTO;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,6 +62,10 @@ public class UsuarioRepository {
     public List<AdministradorDTO> findAdmin(){
         return this.listaAdministrador;
     }
+
+    public List<UsuarioDTO> findUsu(){
+        return this.listaUsuarios;
+    }
     
     public ProductoDTO detalles(Integer codigo){
         ProductoDTO objProducto = null;
@@ -73,16 +79,20 @@ public class UsuarioRepository {
         return objProducto;
     }
 
-    public AdministradorDTO IniciarSesion(AdministradorDTO login){
+    public Boolean IniciarSesion(AdministradorDTO login){
         System.out.println("Invocando a iniciar sesion");
-      AdministradorDTO objAdmins = null;  
+        Boolean objAdmins = null;
+        UsuarioDTO objUsu = null;  
         List<AdministradorDTO> listAdmin = findAdmin();
+        List<UsuarioDTO> listUsu = findUsu();
         for(AdministradorDTO admin : listAdmin){
             if(admin.getUsuario().equals(login.getUsuario())&&admin.getContraseña().equals(login.getContraseña())){
-                objAdmins = admin;
+                objAdmins = true;
                 return objAdmins;
             }
         }
         return objAdmins;
     }
+
+    
 }

@@ -120,13 +120,12 @@ public class IniciarSesion extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         AdminController objAdminServices= new AdminController();
-        AdministradorDTO objAdmin = new AdministradorDTO();
-        objAdmin.setUsuario(loginUsu.getText());
-        objAdmin.setContraseña(loginCon.getText());
-        AdministradorDTO objAdminRegister = objAdminServices.IniciarSesion(objAdmin);
-        if(loginUsu.getText().equals(objAdminRegister.getUsuario()) && loginCon.getText().equals(objAdminRegister.getContraseña())){
+        boolean objAdminRegister = objAdminServices.IniciarSesion(loginUsu.getText(),loginCon.getText());
+        if(!objAdminRegister){
+                    } 
+        else{
             new PaginaPrincipal().setVisible(true);
-        } 
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

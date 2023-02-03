@@ -4,10 +4,12 @@
  */
 package distribuidos.gestor.services;
 
-import distribuidos.gestor.model.AdministradorDTO;
-import distribuidos.gestor.model.ProductoDTO;
-import distribuidos.gestor.model.UsuarioDTO;
+
 import distribuidos.gestor.repositories.UsuarioRepository;
+import distribuidos.gestor.services.DTO.AdministradorDTO;
+import distribuidos.gestor.services.DTO.ProductoDTO;
+import distribuidos.gestor.services.DTO.UsuarioDTO;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,7 +50,7 @@ public class GestorServicesImpl implements IGestorServices{
     }
 
     @Override
-    public AdministradorDTO IniciarSesion(AdministradorDTO login) {
+    public Boolean IniciarSesion(AdministradorDTO login) {
         return this.servicioAccesoBaseDatos.IniciarSesion(login);
     }
 

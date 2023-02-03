@@ -4,10 +4,12 @@
  */
 package distribuidos.gestor.services;
 
-import distribuidos.gestor.model.AdministradorDTO;
-import distribuidos.gestor.model.ProductoDTO;
-import distribuidos.gestor.model.UsuarioDTO;
+
 import java.util.List;
+
+import distribuidos.gestor.services.DTO.AdministradorDTO;
+import distribuidos.gestor.services.DTO.ProductoDTO;
+import distribuidos.gestor.services.DTO.UsuarioDTO;
 
 /**
  *
@@ -19,6 +21,6 @@ public interface IGestorServices {
     public ProductoDTO registrarProducto(ProductoDTO producto);
     public List<ProductoDTO> findAll();
     public ProductoDTO detalles(Integer codigo);
-    public AdministradorDTO IniciarSesion(AdministradorDTO login);
+    public Boolean IniciarSesion(AdministradorDTO login);
     public List<AdministradorDTO> findAdmin();
 }

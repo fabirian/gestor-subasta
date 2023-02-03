@@ -8,7 +8,9 @@ package Modelo;
  *
  * @author fabian
  */
+
 public class AdministradorDTO {
+
 
     private String usuario;
     private String nombre;
@@ -17,7 +19,8 @@ public class AdministradorDTO {
 
     public AdministradorDTO() {
     }
-    
+
+
     public AdministradorDTO(String usuario, String nombre, String apellido, String contraseña) {
         this.usuario = usuario;
         this.nombre = nombre;
@@ -56,4 +59,6 @@ public class AdministradorDTO {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
+
+     
 }
