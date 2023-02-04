@@ -50,7 +50,7 @@ public class GestorServicesImpl implements IGestorServices{
     }
 
     @Override
-    public Boolean IniciarSesion(AdministradorDTO login) {
+    public AdministradorDTO IniciarSesion(AdministradorDTO login) {
         return this.servicioAccesoBaseDatos.IniciarSesion(login);
     }
 

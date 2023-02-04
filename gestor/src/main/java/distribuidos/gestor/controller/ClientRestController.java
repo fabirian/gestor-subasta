@@ -55,9 +55,9 @@ public class ClientRestController {
         return objProdu;
     }
 
-    @PostMapping("/administrador/login")
-    public Boolean login(@RequestBody AdministradorDTO login) {
-        boolean objAdmin = false;
+    @PostMapping("/login")
+    public AdministradorDTO login(@RequestBody AdministradorDTO login) {
+        AdministradorDTO objAdmin = null;
         objAdmin = gestorService.IniciarSesion(login);
         return objAdmin;
     }

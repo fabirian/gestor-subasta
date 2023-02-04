@@ -4,7 +4,6 @@
  */
 package distribuidos.gestor.services.DTO;
 
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;

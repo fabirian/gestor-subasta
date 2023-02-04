@@ -79,15 +79,13 @@ public class UsuarioRepository {
         return objProducto;
     }
 
-    public Boolean IniciarSesion(AdministradorDTO login){
+    public AdministradorDTO IniciarSesion(AdministradorDTO login){
         System.out.println("Invocando a iniciar sesion");
-        Boolean objAdmins = null;
-        UsuarioDTO objUsu = null;  
+      AdministradorDTO objAdmins = null;  
         List<AdministradorDTO> listAdmin = findAdmin();
-        List<UsuarioDTO> listUsu = findUsu();
         for(AdministradorDTO admin : listAdmin){
             if(admin.getUsuario().equals(login.getUsuario())&&admin.getContraseña().equals(login.getContraseña())){
-                objAdmins = true;
+                objAdmins = admin;
                 return objAdmins;
             }
         }

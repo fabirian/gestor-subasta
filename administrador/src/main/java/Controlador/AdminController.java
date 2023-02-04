@@ -72,15 +72,16 @@ public class AdminController {
         return objAdminis;
     }
     
-    public Boolean IniciarSesion(String usuario, String contraseña) {
-        boolean objAdminis = false;
-        boolean obj;
+    public AdministradorDTO IniciarSesion(AdministradorDTO objAdmin) {
+        AdministradorDTO objAdminis = null;
 
-        WebTarget target = this.objAdminPeticiones.target(this.endPoint + "/login" + usuario + contraseña);
+        WebTarget target = this.objAdminPeticiones.target(this.endPointPro);
 
-        Builder objPeticion = target.request(MediaType.APPLICATION_JSON_TYPE);
+        Entity<AdministradorDTO> data = Entity.entity(objAdmin, MediaType.APPLICATION_JSON_TYPE);
 
-        objAdminis = Boolean.parseBoolean(objPeticion.toString());
+        Builder objPeticion = target.request();
+
+        objAdminis = objPeticion.post(data, AdministradorDTO.class);
 
         return objAdminis;
     }

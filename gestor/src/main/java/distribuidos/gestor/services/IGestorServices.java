@@ -21,6 +21,6 @@ public interface IGestorServices {
     public ProductoDTO registrarProducto(ProductoDTO producto);
     public List<ProductoDTO> findAll();
     public ProductoDTO detalles(Integer codigo);
-    public Boolean IniciarSesion(AdministradorDTO login);
+    public AdministradorDTO IniciarSesion(AdministradorDTO login);
     public List<AdministradorDTO> findAdmin();
 }
