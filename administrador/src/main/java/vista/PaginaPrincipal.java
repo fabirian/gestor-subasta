@@ -2,10 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Vista;
+package vista;
 
 import Controlador.AdminController;
-import Modelo.AdministradorDTO;
 import Modelo.ProductoDTO;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -52,49 +51,49 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Nombre", "Codigo", "Valor"
-            }
+                new Object[][]{
+                    {null, null, null},
+                    {null, null, null},
+                    {null, null, null},
+                    {null, null, null}
+                },
+                new String[]{
+                    "Nombre", "Codigo", "Valor"
+                }
         ));
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(añadir)
-                                .addGap(159, 159, 159)
-                                .addComponent(actualizar))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(181, 181, 181)
-                        .addComponent(jLabel1)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(59, 59, 59)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(añadir)
+                                                                .addGap(159, 159, 159)
+                                                                .addComponent(actualizar))
+                                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(181, 181, 181)
+                                                .addComponent(jLabel1)))
+                                .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(actualizar)
-                    .addComponent(añadir))
-                .addContainerGap(30, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(actualizar)
+                                        .addComponent(añadir))
+                                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -105,11 +104,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         List<ProductoDTO> producto = objAdminServices.listarProductos();
         DefaultTableModel table = new DefaultTableModel();
         table.setNumRows(0);
-        for(ProductoDTO prod : producto){
-            Object [] row = {prod.getCodigo(), prod.getNombre(), prod.getValorInicial()};
+        for (ProductoDTO prod : producto) {
+            Object[] row = {prod.getCodigo(), prod.getNombre(), prod.getValorInicial()};
             table.addRow(row);
         }
-        
+
     }//GEN-LAST:event_actualizarActionPerformed
 
     /**
@@ -142,6 +141,14 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                AdminController objAdminServices = new AdminController();
+                List<ProductoDTO> producto = objAdminServices.listarProductos();
+                DefaultTableModel table = new DefaultTableModel();
+                table.setNumRows(0);
+                for (ProductoDTO prod : producto) {
+                    Object[] row = {prod.getCodigo(), prod.getNombre(), prod.getValorInicial()};
+                    table.addRow(row);
+                }
                 new PaginaPrincipal().setVisible(false);
             }
         });

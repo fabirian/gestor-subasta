@@ -4,6 +4,7 @@
  */
 package Vista;
 
+import vista.PaginaPrincipal;
 import Controlador.AdminController;
 import Modelo.AdministradorDTO;
 

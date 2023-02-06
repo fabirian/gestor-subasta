@@ -99,5 +99,13 @@ public class UsuarioRepository {
     private void cargarProductos(){
         ProductoEntity objProductoEntity1 = new ProductoEntity(12, "Mesa", 60000);
         this.listaProducto.add(objProductoEntity1);
+        ProductoEntity objProductoEntity2 = new ProductoEntity(42, "Reloj antiguo", 200000);
+        this.listaProducto.add(objProductoEntity2);
+        ProductoEntity objProductoEntity3 = new ProductoEntity(55, "Juguete", 120000);
+        this.listaProducto.add(objProductoEntity3);
+        ProductoEntity objProductoEntity4 = new ProductoEntity(121, "Mascara ceremonial", 90000);
+        this.listaProducto.add(objProductoEntity4);
+        ProductoEntity objProductoEntity5 = new ProductoEntity(89, "Computadora", 300000);
+        this.listaProducto.add(objProductoEntity5);
     }
 }
