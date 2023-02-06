@@ -11,70 +11,70 @@ package distribuidos.gestor.repositories;
 
 import org.springframework.stereotype.Service;
 
-import distribuidos.gestor.services.DTO.AdministradorDTO;
-import distribuidos.gestor.services.DTO.ProductoDTO;
-import distribuidos.gestor.services.DTO.UsuarioDTO;
-
+import distribuidos.gestor.model.AdministradorEntity;
+import distribuidos.gestor.model.ProductoEntity;
+import distribuidos.gestor.model.UsuarioEntity;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class UsuarioRepository {
-    private ArrayList<ProductoDTO> listaProducto;
-    private ArrayList<AdministradorDTO> listaAdministrador;
-    private ArrayList<UsuarioDTO> listaUsuarios;
+    private ArrayList<ProductoEntity> listaProducto;
+    private ArrayList<AdministradorEntity> listaAdministrador;
+    private ArrayList<UsuarioEntity> listaUsuarios;
 
-    public UsuarioRepository(ArrayList<ProductoDTO> listaProducto, ArrayList<AdministradorDTO> listaAdministrador, ArrayList<UsuarioDTO> listaUsuarios) {
-        this.listaProducto = listaProducto;
-        this.listaAdministrador = listaAdministrador;
-        this.listaUsuarios = listaUsuarios;
+    public UsuarioRepository(ArrayList<ProductoEntity> listaProducto, ArrayList<AdministradorEntity> listaAdministrador, ArrayList<UsuarioEntity> listaUsuarios) {
+        this.listaProducto = new ArrayList<ProductoEntity>();
+        this.listaAdministrador = new ArrayList<AdministradorEntity>();
+        this.listaUsuarios = new ArrayList<UsuarioEntity>();
+        cargarProductos();
     }
     
-    public AdministradorDTO registrarAdministrador(AdministradorDTO administrador){
+    public AdministradorEntity registrarAdministrador(AdministradorEntity administrador){
         System.out.println("Invocando a registrar admin");
-        AdministradorDTO objAdmin = null;
+        AdministradorEntity objAdmin = null;
         if(this.listaAdministrador.add(administrador)){
             objAdmin = administrador;
         }
         return objAdmin;
     }
     
-    public UsuarioDTO registrarUsuario(UsuarioDTO usuario){
+    public UsuarioEntity registrarUsuario(UsuarioEntity usuario){
         System.out.println("Invocando registrar usuario");
-        UsuarioDTO objUsu = null;
+        UsuarioEntity objUsu = null;
         if(this.listaUsuarios.add(usuario)){
             objUsu = usuario;
         }
         return objUsu;
     }
     
-    public ProductoDTO registrarProducto(ProductoDTO producto){
+    public ProductoEntity registrarProducto(ProductoEntity producto){
         System.out.println("Invocando registrar producto");
-        ProductoDTO objPro = null;
+        ProductoEntity objPro = null;
         if(this.listaProducto.add(producto)){
             objPro = producto;
         }
         return objPro;
     }
     
-    public List<ProductoDTO> findAll(){
+    public List<ProductoEntity> findAll(){
             System.out.println("Invocando listar productos");
         return this.listaProducto;
     }
 
-    public List<AdministradorDTO> findAdmin(){
+    public List<AdministradorEntity> findAdmin(){
         return this.listaAdministrador;
     }
 
-    public List<UsuarioDTO> findUsu(){
+    public List<UsuarioEntity> findUsu(){
         return this.listaUsuarios;
     }
     
-    public ProductoDTO detalles(Integer codigo){
+    public ProductoEntity detalles(Integer codigo){
         System.out.println("Invocando a consultar producto");
-        ProductoDTO objProducto = null;
+        ProductoEntity objProducto = null;
         
-        for(ProductoDTO producto: listaProducto){
+        for(ProductoEntity producto: listaProducto){
             if(producto.getCodigo()==codigo){
                 objProducto = producto;
                 break;
@@ -83,11 +83,11 @@ public class UsuarioRepository {
         return objProducto;
     }
 
-    public AdministradorDTO IniciarSesion(AdministradorDTO login){
+    public AdministradorEntity IniciarSesion(AdministradorEntity login){
         System.out.println("Invocando a iniciar sesion");
-      AdministradorDTO objAdmins = null;  
-        List<AdministradorDTO> listAdmin = findAdmin();
-        for(AdministradorDTO admin : listAdmin){
+      AdministradorEntity objAdmins = null;  
+        List<AdministradorEntity> listAdmin = findAdmin();
+        for(AdministradorEntity admin : listAdmin){
             if(admin.getUsuario().equals(login.getUsuario())&&admin.getContraseña().equals(login.getContraseña())){
                 objAdmins = admin;
                 return objAdmins;
@@ -96,5 +96,8 @@ public class UsuarioRepository {
         return objAdmins;
     }
 
-    
+    private void cargarProductos(){
+        ProductoEntity objProductoEntity1 = new ProductoEntity(12, "Mesa", 60000);
+        this.listaProducto.add(objProductoEntity1);
+    }
 }
