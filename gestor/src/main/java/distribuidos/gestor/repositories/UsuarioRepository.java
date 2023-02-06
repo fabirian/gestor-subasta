@@ -40,6 +40,7 @@ public class UsuarioRepository {
     }
     
     public UsuarioDTO registrarUsuario(UsuarioDTO usuario){
+        System.out.println("Invocando registrar usuario");
         UsuarioDTO objUsu = null;
         if(this.listaUsuarios.add(usuario)){
             objUsu = usuario;
@@ -48,6 +49,7 @@ public class UsuarioRepository {
     }
     
     public ProductoDTO registrarProducto(ProductoDTO producto){
+        System.out.println("Invocando registrar producto");
         ProductoDTO objPro = null;
         if(this.listaProducto.add(producto)){
             objPro = producto;
@@ -56,6 +58,7 @@ public class UsuarioRepository {
     }
     
     public List<ProductoDTO> findAll(){
+            System.out.println("Invocando listar productos");
         return this.listaProducto;
     }
 
@@ -68,6 +71,7 @@ public class UsuarioRepository {
     }
     
     public ProductoDTO detalles(Integer codigo){
+        System.out.println("Invocando a consultar producto");
         ProductoDTO objProducto = null;
         
         for(ProductoDTO producto: listaProducto){

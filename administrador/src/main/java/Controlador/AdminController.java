@@ -23,32 +23,22 @@ import java.util.List;
 
 public class AdminController {
 
-    private String endPoint;
-    private String endPointPro;
-    private Client objAdminPeticiones;
+    private final String endPoint;
+    private final String endPointLogin;
+    private final String endPointPro;
+    private final Client objAdminPeticiones;
 
     public AdminController() {
         this.endPoint = "http://localhost:8080/api/administrador";
-        this.endPointPro = "http://localhost:8080/api/login";
+        this.endPointLogin = "http://localhost:8080/api/login";
+        this.endPointPro = "http://localhost:8080/api/producto";
         this.objAdminPeticiones = ClientBuilder.newClient().register(new JacksonFeature());
     }
 
-    public AdministradorDTO consultarCliente(Integer id) {
-        AdministradorDTO objCliente = null;
-
-        WebTarget target = this.objAdminPeticiones.target(this.endPoint + "/" + id);
-
-        Builder objPeticion = target.request(MediaType.APPLICATION_JSON_TYPE);
-
-        objCliente = objPeticion.get(AdministradorDTO.class);
-
-        return objCliente;
-    }
-
-    public List<ProductoDTO> listarProductos() {
+        public List<ProductoDTO> listarProductos() {
         List<ProductoDTO> listaProdu = null;
 
-        WebTarget target = this.objAdminPeticiones.target(this.endPoint);
+        WebTarget target = this.objAdminPeticiones.target(this.endPointPro +"/lista");
 
         Builder objPeticion = target.request(MediaType.APPLICATION_JSON);
 
@@ -58,6 +48,20 @@ public class AdminController {
         return listaProdu;
     }
 
+    public ProductoDTO registrarProducto(AdministradorDTO objAdmin) {
+        ProductoDTO objProd = null;
+
+        WebTarget target = this.objAdminPeticiones.target(this.endPointPro + "/registrar");
+
+        Entity<ProductoDTO> data = Entity.entity(objProd, MediaType.APPLICATION_JSON_TYPE);
+
+        Builder objPeticion = target.request(MediaType.APPLICATION_JSON_TYPE);
+
+        objProd = objPeticion.post(data, ProductoDTO.class);
+
+        return objProd;
+    }
+    
     public AdministradorDTO registrarAdmin(AdministradorDTO objAdmin) {
         AdministradorDTO objAdminis = null;
 
@@ -73,9 +77,10 @@ public class AdminController {
     }
     
     public AdministradorDTO IniciarSesion(AdministradorDTO objAdmin) {
+        
         AdministradorDTO objAdminis = null;
 
-        WebTarget target = this.objAdminPeticiones.target(this.endPointPro);
+        WebTarget target = this.objAdminPeticiones.target(this.endPointLogin);
 
         Entity<AdministradorDTO> data = Entity.entity(objAdmin, MediaType.APPLICATION_JSON_TYPE);
 

@@ -43,7 +43,7 @@ public class ClientRestController {
     @Autowired
     private IGestorServices gestorService;
 
-    @GetMapping("/productos")
+    @GetMapping("/producto/lista")
     public List<ProductoDTO> index() {
         return gestorService.findAll();
     }
@@ -76,7 +76,7 @@ public class ClientRestController {
         return objUsua;
     }
     
-    @PostMapping("/producto")
+    @PostMapping("/producto/registrar")
     public ProductoDTO create(@RequestBody ProductoDTO producto) {
         ProductoDTO objProd = null;
         objProd = gestorService.registrarProducto(producto);
