@@ -16,7 +16,7 @@ import lombok.Setter;
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class ProductoDTO {
 
-    private Integer id;
+
     private int codigo;
     private String nombre;
     private int valorInicial;

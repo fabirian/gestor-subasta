@@ -13,6 +13,10 @@ public class ProductoDTO {
     private String nombre;
     private int valorInicial;
 
+    public ProductoDTO() {
+    }
+    
+    
     public ProductoDTO(int codigo, String nombre, int valorInicial) {
         this.codigo = codigo;
         this.nombre = nombre;

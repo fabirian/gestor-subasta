@@ -59,7 +59,7 @@ public class GestorServicesImpl implements IGestorServices{
 
     @Override
     public List<ProductoDTO> findAll() {
-        List<ProductoEntity> prodEnti = this.servicioAccesoBaseDatos.findAll();
+        Iterable<ProductoEntity> prodEnti = this.servicioAccesoBaseDatos.findAll();
         List<ProductoDTO> prodDTO = this.modelMapper.map(prodEnti, new TypeToken<List<ProductoDTO>>(){}.getType());
         return prodDTO;
     }

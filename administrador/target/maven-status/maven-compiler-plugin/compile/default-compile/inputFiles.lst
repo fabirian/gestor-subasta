@@ -1,5 +1,8 @@
-/home/fabian/NetBeansProjects/github/administrador/src/main/java/vista/Administrador.java
 /home/fabian/NetBeansProjects/github/administrador/src/main/java/vista/Registrar.java
+/home/fabian/NetBeansProjects/github/administrador/src/main/java/Controlador/AdminController.java
+/home/fabian/NetBeansProjects/github/administrador/src/main/java/Modelo/AdministradorDTO.java
 /home/fabian/NetBeansProjects/github/administrador/src/main/java/vista/PaginaPrincipal.java
 /home/fabian/NetBeansProjects/github/administrador/src/main/java/vista/IniciarSesion.java
 /home/fabian/NetBeansProjects/github/administrador/src/main/java/vista/AdministradorView.java
+/home/fabian/NetBeansProjects/github/administrador/src/main/java/vista/Lista.java
+/home/fabian/NetBeansProjects/github/administrador/src/main/java/Modelo/ProductoDTO.java

@@ -42,8 +42,7 @@ public class AdminController {
 
         Builder objPeticion = target.request(MediaType.APPLICATION_JSON);
 
-        listaProdu = objPeticion.get(new GenericType<List<ProductoDTO>>() {
-        });
+        listaProdu = objPeticion.get(new GenericType<List<ProductoDTO>>(){});
 
         return listaProdu;
     }

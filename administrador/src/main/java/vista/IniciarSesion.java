@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Vista;
+package vista;
 
 import vista.PaginaPrincipal;
 import Controlador.AdminController;
@@ -126,7 +126,7 @@ public class IniciarSesion extends javax.swing.JFrame {
         objAdmin.setContraseña(loginCon.getText());
         AdministradorDTO objAdminRegister = objAdminServices.IniciarSesion(objAdmin);
         if (loginUsu.getText().equals(objAdminRegister.getUsuario()) && loginCon.getText().equals(objAdminRegister.getContraseña())) {
-            new PaginaPrincipal().setVisible(true);
+            new Lista().setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
