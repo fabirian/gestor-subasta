@@ -8,7 +8,6 @@ import Controlador.AdminController;
 import Modelo.ProductoDTO;
 import java.util.List;
 import javax.swing.DefaultListModel;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *

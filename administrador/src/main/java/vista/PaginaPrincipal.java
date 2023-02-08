@@ -6,7 +6,6 @@ package vista;
 
 import Controlador.AdminController;
 import Modelo.ProductoDTO;
-import java.awt.Label;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
