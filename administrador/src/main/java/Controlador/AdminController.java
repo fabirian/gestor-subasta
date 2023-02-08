@@ -35,14 +35,15 @@ public class AdminController {
         this.objAdminPeticiones = ClientBuilder.newClient().register(new JacksonFeature());
     }
 
-        public List<ProductoDTO> listarProductos() {
+    public List<ProductoDTO> listarProductos() {
         List<ProductoDTO> listaProdu = null;
 
-        WebTarget target = this.objAdminPeticiones.target(this.endPointPro +"/lista");
+        WebTarget target = this.objAdminPeticiones.target(this.endPointPro + "/lista");
 
         Builder objPeticion = target.request(MediaType.APPLICATION_JSON);
 
-        listaProdu = objPeticion.get(new GenericType<List<ProductoDTO>>(){});
+        listaProdu = objPeticion.get(new GenericType<List<ProductoDTO>>() {
+        });
 
         return listaProdu;
     }
@@ -60,7 +61,7 @@ public class AdminController {
 
         return objProd;
     }
-    
+
     public AdministradorDTO registrarAdmin(AdministradorDTO objAdmin) {
         AdministradorDTO objAdminis = null;
 
@@ -74,9 +75,9 @@ public class AdminController {
 
         return objAdminis;
     }
-    
+
     public AdministradorDTO IniciarSesion(AdministradorDTO objAdmin) {
-        
+
         AdministradorDTO objAdminis = null;
 
         WebTarget target = this.objAdminPeticiones.target(this.endPointLogin);
@@ -88,6 +89,20 @@ public class AdminController {
         objAdminis = objPeticion.post(data, AdministradorDTO.class);
 
         return objAdminis;
+    }
+
+    public ProductoDTO cambiarEstadoSubasta(Integer codigoAcambiar, String abiertoCerrado) {
+        ProductoDTO objProd = null;
+
+        WebTarget target = this.objAdminPeticiones.target(this.endPointPro + "/estado/" + codigoAcambiar + "/" + abiertoCerrado);
+
+        Entity<ProductoDTO> data = Entity.entity(objProd, MediaType.APPLICATION_JSON_TYPE);
+
+        Builder objPeticion = target.request(MediaType.APPLICATION_JSON_TYPE);
+
+        objProd = objPeticion.post(data, ProductoDTO.class);
+
+        return objProd;
     }
 
 }

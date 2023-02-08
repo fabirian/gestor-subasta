@@ -12,15 +12,17 @@ public class ProductoDTO {
     private int codigo;
     private String nombre;
     private int valorInicial;
+    private boolean estado;
 
     public ProductoDTO() {
     }
     
     
-    public ProductoDTO(int codigo, String nombre, int valorInicial) {
+    public ProductoDTO(int codigo, String nombre, int valorInicial, boolean estado) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.valorInicial = valorInicial;
+        this.estado = estado;
     }
 
     public int getCodigo() {
@@ -46,4 +48,13 @@ public class ProductoDTO {
     public void setValorInicial(int valorInicial) {
         this.valorInicial = valorInicial;
     }
+    
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+    
 }

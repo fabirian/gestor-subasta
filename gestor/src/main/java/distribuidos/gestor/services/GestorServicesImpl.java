@@ -4,7 +4,6 @@
  */
 package distribuidos.gestor.services;
 
-
 import distribuidos.gestor.model.AdministradorEntity;
 import distribuidos.gestor.model.ProductoEntity;
 import distribuidos.gestor.model.UsuarioEntity;
@@ -25,14 +24,14 @@ import org.springframework.stereotype.Service;
  * @author fabian
  */
 @Service
-public class GestorServicesImpl implements IGestorServices{
+public class GestorServicesImpl implements IGestorServices {
 
     @Autowired
     private UsuarioRepository servicioAccesoBaseDatos;
 
     @Autowired
     private ModelMapper modelMapper;
-    
+
     @Override
     public AdministradorDTO registrarAdmin(AdministradorDTO administrador) {
         AdministradorEntity adminEnti = this.modelMapper.map(administrador, AdministradorEntity.class);
@@ -43,16 +42,16 @@ public class GestorServicesImpl implements IGestorServices{
 
     @Override
     public UsuarioDTO registrarUsuario(UsuarioDTO usuario) {
-       UsuarioEntity usuEn = this.modelMapper.map(usuario, UsuarioEntity.class);
-       UsuarioEntity objUsu = this.servicioAccesoBaseDatos.registrarUsuario(usuEn);
-       UsuarioDTO usu = this.modelMapper.map(objUsu, UsuarioDTO.class);
-       return usu;
+        UsuarioEntity usuEn = this.modelMapper.map(usuario, UsuarioEntity.class);
+        UsuarioEntity objUsu = this.servicioAccesoBaseDatos.registrarUsuario(usuEn);
+        UsuarioDTO usu = this.modelMapper.map(objUsu, UsuarioDTO.class);
+        return usu;
     }
 
     @Override
     public ProductoDTO registrarProducto(ProductoDTO producto) {
         ProductoEntity prod = this.modelMapper.map(producto, ProductoEntity.class);
-        ProductoEntity objProd =this.servicioAccesoBaseDatos.registrarProducto(prod);
+        ProductoEntity objProd = this.servicioAccesoBaseDatos.registrarProducto(prod);
         ProductoDTO produc = this.modelMapper.map(objProd, ProductoDTO.class);
         return produc;
     }
@@ -60,7 +59,8 @@ public class GestorServicesImpl implements IGestorServices{
     @Override
     public List<ProductoDTO> findAll() {
         Iterable<ProductoEntity> prodEnti = this.servicioAccesoBaseDatos.findAll();
-        List<ProductoDTO> prodDTO = this.modelMapper.map(prodEnti, new TypeToken<List<ProductoDTO>>(){}.getType());
+        List<ProductoDTO> prodDTO = this.modelMapper.map(prodEnti, new TypeToken<List<ProductoDTO>>() {
+        }.getType());
         return prodDTO;
     }
 
@@ -82,9 +82,16 @@ public class GestorServicesImpl implements IGestorServices{
     @Override
     public List<AdministradorDTO> findAdmin() {
         List<AdministradorEntity> adminList = this.servicioAccesoBaseDatos.findAdmin();
-        List<AdministradorDTO> adminDTO = this.modelMapper.map(adminList, new TypeToken<List<AdministradorDTO>>(){}.getType());
+        List<AdministradorDTO> adminDTO = this.modelMapper.map(adminList, new TypeToken<List<AdministradorDTO>>() {
+        }.getType());
         return adminDTO;
     }
 
-    
+    @Override
+    public ProductoDTO cambiarEstadoSubasta(Integer codigo, String estado) {
+        ProductoEntity objPrd = this.servicioAccesoBaseDatos.cambiarEstadoSubasta(codigo, estado);
+        ProductoDTO proDTO = this.modelMapper.map(objPrd, ProductoDTO.class);
+        return proDTO;
+    }
+
 }
