@@ -1,1 +1,0 @@
-typeSearchIndex = [{"p":"Controlador","l":"AdminController"},{"p":"Modelo","l":"AdministradorDTO"},{"p":"vista","l":"AdministradorView"},{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"vista","l":"IniciarSesion"},{"p":"vista","l":"Lista"},{"p":"vista","l":"PaginaPrincipal"},{"p":"Modelo","l":"ProductoDTO"},{"p":"vista","l":"Registrar"}];updateSearchResults();
