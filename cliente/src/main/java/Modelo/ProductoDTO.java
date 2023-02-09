@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Modelo;
 
 /**
@@ -48,7 +44,7 @@ public class ProductoDTO {
     public void setValorInicial(int valorInicial) {
         this.valorInicial = valorInicial;
     }
-    
+
     public boolean getEstado() {
         return estado;
     }
