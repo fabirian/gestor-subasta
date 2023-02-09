@@ -23,4 +23,5 @@ public interface IGestorServices {
     public AdministradorDTO IniciarSesion(AdministradorDTO login);
     public List<AdministradorDTO> findAdmin();
     public ProductoDTO cambiarEstadoSubasta(Integer codigo, String estado);
+    public ProductoDTO cambiarEstadoValor(Integer codigo, Integer estado);
 }

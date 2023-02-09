@@ -103,4 +103,11 @@ public class AdminRestController {
         objProdu = gestorService.cambiarEstadoSubasta(codigo, estado);
         return objProdu;
     }
+
+    @PostMapping("/producto/valor/{codigo}/{estado}")
+    public ProductoDTO cambiarEstadoValor(@Min(5) @PathVariable Integer codigo, @Min(5) @PathVariable Integer estado) {
+        ProductoDTO objProdu = null;
+        objProdu = gestorService.cambiarEstadoValor(codigo, estado);
+        return objProdu;
+    }
 }

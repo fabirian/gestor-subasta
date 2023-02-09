@@ -54,6 +54,11 @@ public class Lista extends javax.swing.JFrame {
         jScrollPane1.setViewportView(listaProd);
 
         jButton1.setText("Añadir Producto");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Actualizar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -139,6 +144,11 @@ public class Lista extends javax.swing.JFrame {
         objAdminServices.cambiarEstadoSubasta(codigoAcambiar, abiertoCerrado);
         imprimirLista();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       this.setVisible(false);
+        new RegistrarProducto().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

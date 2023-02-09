@@ -86,4 +86,11 @@ public class GestorServicesImpl implements IGestorServices {
         return proDTO;
     }
 
+    @Override
+    public ProductoDTO cambiarEstadoValor(Integer codigo, Integer estado) {
+        ProductoEntity objPrd = this.servicioAccesoBaseDatos.cambiarEstadoValor(codigo, estado);
+        ProductoDTO proDTO = this.modelMapper.map(objPrd, ProductoDTO.class);
+        return proDTO;
+    }
+
 }

@@ -31,14 +31,15 @@ public class ClienteController {
         this.objClientPeticiones = ClientBuilder.newClient().register(new JacksonFeature());
     }
 
-        public List<ProductoDTO> listarProductos() {
+    public List<ProductoDTO> listarProductos() {
         List<ProductoDTO> listaProdu = null;
 
-        WebTarget target = this.objClientPeticiones.target(this.endPointPro +"/lista");
+        WebTarget target = this.objClientPeticiones.target(this.endPointPro + "/lista");
 
         Builder objPeticion = target.request(MediaType.APPLICATION_JSON);
 
-        listaProdu = objPeticion.get(new GenericType<List<ProductoDTO>>(){});
+        listaProdu = objPeticion.get(new GenericType<List<ProductoDTO>>() {
+        });
 
         return listaProdu;
     }
@@ -56,7 +57,7 @@ public class ClienteController {
 
         return objProd;
     }
-    
+
     public UsuarioDTO registrarCliente(UsuarioDTO objCliente) {
         UsuarioDTO objClientes = null;
 
@@ -70,9 +71,9 @@ public class ClienteController {
 
         return objClientes;
     }
-    
+
     public UsuarioDTO IniciarSesion(UsuarioDTO objClient) {
-        
+
         UsuarioDTO objClientes = null;
 
         WebTarget target = this.objClientPeticiones.target(this.endPointLogin);
@@ -85,17 +86,32 @@ public class ClienteController {
 
         return objClientes;
     }
-    
+
     public ProductoDTO DetallesProducto(String nombre) {
         ProductoDTO objProd = null;
 
-        WebTarget target = this.objClientPeticiones.target(this.endPointPro +"/detalles/"+ nombre );
+        WebTarget target = this.objClientPeticiones.target(this.endPointPro + "/detalles/" + nombre);
 
         Entity<ProductoDTO> data = Entity.entity(objProd, MediaType.APPLICATION_JSON_TYPE);
 
         Builder objPeticion = target.request(MediaType.APPLICATION_JSON_TYPE);
 
-        objProd = objPeticion.get(new GenericType<ProductoDTO>(){});
+        objProd = objPeticion.get(new GenericType<ProductoDTO>() {
+        });
+
+        return objProd;
+    }
+
+    public ProductoDTO cambiarEstadoValor(Integer codigoAcambiar, Integer abiertoCerrado) {
+        ProductoDTO objProd = null;
+
+        WebTarget target = this.objClientPeticiones.target(this.endPointPro + "/valor/" + codigoAcambiar + "/" + abiertoCerrado);
+
+        Entity<ProductoDTO> data = Entity.entity(objProd, MediaType.APPLICATION_JSON_TYPE);
+
+        Builder objPeticion = target.request(MediaType.APPLICATION_JSON_TYPE);
+
+        objProd = objPeticion.post(data, ProductoDTO.class);
 
         return objProd;
     }

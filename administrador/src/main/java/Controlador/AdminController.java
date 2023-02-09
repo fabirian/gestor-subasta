@@ -48,12 +48,12 @@ public class AdminController {
         return listaProdu;
     }
 
-    public ProductoDTO registrarProducto(AdministradorDTO objAdmin) {
+    public ProductoDTO registrarProducto(ProductoDTO objAdmin) {
         ProductoDTO objProd = null;
 
         WebTarget target = this.objAdminPeticiones.target(this.endPointPro + "/registrar");
 
-        Entity<ProductoDTO> data = Entity.entity(objProd, MediaType.APPLICATION_JSON_TYPE);
+        Entity<ProductoDTO> data = Entity.entity(objAdmin, MediaType.APPLICATION_JSON_TYPE);
 
         Builder objPeticion = target.request(MediaType.APPLICATION_JSON_TYPE);
 

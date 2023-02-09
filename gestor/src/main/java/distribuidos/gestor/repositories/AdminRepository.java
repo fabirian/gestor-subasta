@@ -23,7 +23,8 @@ public class AdminRepository {
     private ArrayList<AdministradorEntity> listaAdministrador;
     private ArrayList<UsuarioEntity> listaUsuarios;
 
-    public AdminRepository(ArrayList<ProductoEntity> listaProducto, ArrayList<AdministradorEntity> listaAdministrador, ArrayList<UsuarioEntity> listaUsuarios) {
+    public AdminRepository(ArrayList<ProductoEntity> listaProducto, ArrayList<AdministradorEntity> listaAdministrador,
+            ArrayList<UsuarioEntity> listaUsuarios) {
         this.listaProducto = new ArrayList<ProductoEntity>();
         this.listaAdministrador = new ArrayList<AdministradorEntity>();
         this.listaUsuarios = new ArrayList<UsuarioEntity>();
@@ -70,7 +71,7 @@ public class AdminRepository {
         return this.listaUsuarios;
     }
 
-public ProductoEntity detallesProducto(String nombre) {
+    public ProductoEntity detallesProducto(String nombre) {
         System.out.println("Invocando a consultar producto");
         ProductoEntity objProducto = null;
 
@@ -115,12 +116,25 @@ public ProductoEntity detallesProducto(String nombre) {
 
         for (ProductoEntity producto : listaProducto) {
             if (producto.getCodigo() == codigo) {
-                if("Abierta".equals(estado))
-                {
+                if ("Abierta".equals(estado)) {
                     producto.setEstado(true);
-                }else
-                {
+                } else {
                     producto.setEstado(false);
+                }
+                objProducto = producto;
+                break;
+            }
+        }
+        return objProducto;
+    }
+
+    public ProductoEntity cambiarEstadoValor(Integer codigo, Integer estado) {
+        System.out.println("Invocando a cambiando el valor");
+        ProductoEntity objProducto = null;
+        for (ProductoEntity producto : listaProducto) {
+            if (producto.getCodigo() == codigo) {
+                if (producto.getValorInicial() <= estado) {
+                    producto.setValorInicial(estado);
                 }
                 objProducto = producto;
                 break;
