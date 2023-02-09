@@ -5,6 +5,7 @@
 package distribuidos.gestor.services.DTO;
 
 import java.util.List;
+import javax.persistence.Entity;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -20,14 +21,12 @@ import lombok.Setter;
  *
  * @author fabian
  */
-
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class UsuarioDTO {
 
-    private Integer id;
     @NotNull(message = "{user.name.empty}")
     @Size(min =10, max=20, message="El usuario debe tener un tamaño entre 10 y 20 caracteres")
     private String usuario;
@@ -45,6 +44,4 @@ public class UsuarioDTO {
     private String email;
     @Pattern(message = "{user.telephone.pattern}",regexp = "[5][0-9]{10}")
     private String telefono;
-
-    private List<ProductoDTO> producto;
 }

@@ -17,10 +17,9 @@ import distribuidos.gestor.services.DTO.UsuarioDTO;
  */
 public interface IGestorServices {
     public AdministradorDTO registrarAdmin(AdministradorDTO administrador);
-    public UsuarioDTO registrarUsuario(UsuarioDTO usuario);
     public ProductoDTO registrarProducto(ProductoDTO producto);
     public List<ProductoDTO> findAll();
-    public ProductoDTO detalles(Integer codigo);
+    public ProductoDTO detallesProdcuto(String nombre);
     public AdministradorDTO IniciarSesion(AdministradorDTO login);
     public List<AdministradorDTO> findAdmin();
     public ProductoDTO cambiarEstadoSubasta(Integer codigo, String estado);

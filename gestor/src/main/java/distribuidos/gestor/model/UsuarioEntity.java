@@ -2,6 +2,7 @@
 package distribuidos.gestor.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 
@@ -17,8 +18,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "Administrador")
  public class UsuarioEntity {
-
-
+    
     private String usuario;
     private String nombre;
     private String apellido;

@@ -7,7 +7,7 @@ package distribuidos.gestor.services;
 import distribuidos.gestor.model.AdministradorEntity;
 import distribuidos.gestor.model.ProductoEntity;
 import distribuidos.gestor.model.UsuarioEntity;
-import distribuidos.gestor.repositories.UsuarioRepository;
+import distribuidos.gestor.repositories.AdminRepository;
 import distribuidos.gestor.services.DTO.AdministradorDTO;
 import distribuidos.gestor.services.DTO.ProductoDTO;
 import distribuidos.gestor.services.DTO.UsuarioDTO;
@@ -27,7 +27,7 @@ import org.springframework.stereotype.Service;
 public class GestorServicesImpl implements IGestorServices {
 
     @Autowired
-    private UsuarioRepository servicioAccesoBaseDatos;
+    private AdminRepository servicioAccesoBaseDatos;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -38,14 +38,6 @@ public class GestorServicesImpl implements IGestorServices {
         AdministradorEntity objAdmin = this.servicioAccesoBaseDatos.registrarAdministrador(adminEnti);
         AdministradorDTO admin = this.modelMapper.map(objAdmin, AdministradorDTO.class);
         return admin;
-    }
-
-    @Override
-    public UsuarioDTO registrarUsuario(UsuarioDTO usuario) {
-        UsuarioEntity usuEn = this.modelMapper.map(usuario, UsuarioEntity.class);
-        UsuarioEntity objUsu = this.servicioAccesoBaseDatos.registrarUsuario(usuEn);
-        UsuarioDTO usu = this.modelMapper.map(objUsu, UsuarioDTO.class);
-        return usu;
     }
 
     @Override
@@ -65,8 +57,8 @@ public class GestorServicesImpl implements IGestorServices {
     }
 
     @Override
-    public ProductoDTO detalles(Integer codigo) {
-        ProductoEntity objPrd = this.servicioAccesoBaseDatos.detalles(codigo);
+    public ProductoDTO detallesProdcuto(String nombre) {
+        ProductoEntity objPrd = this.servicioAccesoBaseDatos.detallesProducto(nombre);
         ProductoDTO proDTO = this.modelMapper.map(objPrd, ProductoDTO.class);
         return proDTO;
     }
