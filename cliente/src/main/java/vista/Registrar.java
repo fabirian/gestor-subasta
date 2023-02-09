@@ -6,6 +6,9 @@ package vista;
 
 import Controlador.ClienteController;
 import Modelo.UsuarioDTO;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -74,6 +77,12 @@ public class Registrar extends javax.swing.JFrame {
         jLabel6.setText("Correo");
 
         jLabel7.setText("Telefono");
+
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,18 +158,52 @@ public class Registrar extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        ClienteController objClientServices= new ClienteController();
+        ClienteController objClientServices = new ClienteController();
         UsuarioDTO objClient = new UsuarioDTO();
         objClient.setUsuario(usuario.getText());
         objClient.setNombre(nombre.getText());
         objClient.setApellido(apellidos.getText());
         objClient.setContraseña(contraseña.getText());
-        objClient.setEmail(txtCorreo.getText());
-        objClient.setTelefono(txtTelefono.getText());
-        UsuarioDTO objClientRegister = objClientServices.registrarCliente(objClient);
-        this.setVisible(false);
-        new ClienteView().setVisible(true);
+        if (validate(txtCorreo.getText())) {
+            objClient.setEmail(txtCorreo.getText());
+            objClient.setTelefono(txtTelefono.getText());
+            UsuarioDTO objClientRegister = objClientServices.registrarCliente(objClient);
+            this.setVisible(false);
+            new ClienteView().setVisible(true);
+        } else {
+            while (validate(txtCorreo.getText()) == false) {
+                txtCorreo.setText(null);
+                JOptionPane.showMessageDialog(null, "Error en el correo");
+                break;
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private static final String EMAIL_PATTERN
+            = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
+    private static Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+    private static Matcher matcher;
+
+    public static boolean validate(final String email) {
+        matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+        int key = evt.getKeyChar();
+
+        boolean numeros = key >= 48 && key <= 57;
+
+        if (!numeros) {
+            evt.consume();
+        }
+
+        if (txtTelefono.getText().trim().length() == 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtTelefonoKeyTyped
 
     /**
      * @param args the command line arguments

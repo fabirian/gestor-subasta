@@ -163,6 +163,9 @@
     <Component class="javax.swing.JTextField" name="txtCorreo">
     </Component>
     <Component class="javax.swing.JTextField" name="txtTelefono">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTelefonoKeyTyped"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

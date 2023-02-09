@@ -31,6 +31,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import org.springframework.validation.FieldError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PutMapping;
 
 /**
@@ -39,6 +40,7 @@ import org.springframework.web.bind.annotation.PutMapping;
  */
 @RestController
 @RequestMapping("/api")
+@Validated
 public class AdminRestController {
 
     @Autowired

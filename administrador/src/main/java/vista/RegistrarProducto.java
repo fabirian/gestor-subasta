@@ -56,6 +56,23 @@ public class RegistrarProducto extends javax.swing.JFrame {
             }
         });
 
+        codigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                codigoKeyTyped(evt);
+            }
+        });
+
+        valor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                valorActionPerformed(evt);
+            }
+        });
+        valor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                valorKeyTyped(evt);
+            }
+        });
+
         jButton1.setText("Enviar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,7 +136,7 @@ public class RegistrarProducto extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        AdminController objAdminServices= new AdminController();
+        AdminController objAdminServices = new AdminController();
         ProductoDTO objAdmin = new ProductoDTO();
         objAdmin.setNombre(nombre.getText());
         objAdmin.setCodigo(Integer.parseInt(codigo.getText()));
@@ -129,6 +146,38 @@ public class RegistrarProducto extends javax.swing.JFrame {
         this.setVisible(false);
         new Lista().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void valorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_valorActionPerformed
+
+    private void valorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorKeyTyped
+        int key = evt.getKeyChar();
+
+        boolean numeros = key >= 48 && key <= 57;
+
+        if (!numeros) {
+            evt.consume();
+        }
+
+        if (valor.getText().trim().length() == 8) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_valorKeyTyped
+
+    private void codigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codigoKeyTyped
+        int key = evt.getKeyChar();
+
+        boolean numeros = key >= 48 && key <= 57;
+
+        if (!numeros) {
+            evt.consume();
+        }
+
+        if (codigo.getText().trim().length() == 5) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_codigoKeyTyped
 
     /**
      * @param args the command line arguments

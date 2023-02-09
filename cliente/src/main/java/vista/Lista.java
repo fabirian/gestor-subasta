@@ -92,6 +92,12 @@ public class Lista extends javax.swing.JFrame {
 
         lblOferta.setText("Hacer Oferta $");
 
+        ofertaPesos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ofertaPesosKeyTyped(evt);
+            }
+        });
+
         jButton1.setText("Buscar Producto");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,6 +196,20 @@ public class Lista extends javax.swing.JFrame {
         lista.addElement(datos);
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ofertaPesosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ofertaPesosKeyTyped
+        int key = evt.getKeyChar();
+
+        boolean numeros = key >= 48 && key <= 57;
+
+        if (!numeros) {
+            evt.consume();
+        }
+
+        if (ofertaPesos.getText().trim().length() == 8) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_ofertaPesosKeyTyped
 
     /**
      * @param args the command line arguments
