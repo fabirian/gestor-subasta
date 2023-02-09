@@ -19,5 +19,5 @@ public class ProductoEntity {
     private int codigo;
     private String nombre;
     private int valorInicial;  
-
+    private boolean estado;
  }

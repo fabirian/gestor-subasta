@@ -20,6 +20,6 @@ public class ProductoDTO {
     private int codigo;
     private String nombre;
     private int valorInicial;
-    
+    private boolean estado;
     
 }

@@ -31,6 +31,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.PutMapping;
 
 /**
  *
@@ -68,14 +69,14 @@ public class ClientRestController {
         objAdmin = gestorService.registrarAdmin(administrador);
         return objAdmin;
     }
-    
+
     @PostMapping("/usuario")
     public UsuarioDTO create(@RequestBody UsuarioDTO usuario) {
         UsuarioDTO objUsua = null;
         objUsua = gestorService.registrarUsuario(usuario);
         return objUsua;
     }
-    
+
     @PostMapping("/producto/registrar")
     public ProductoDTO create(@RequestBody ProductoDTO producto) {
         ProductoDTO objProd = null;
@@ -84,22 +85,29 @@ public class ClientRestController {
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-	@ExceptionHandler(ConstraintViolationException.class)
-	ResponseEntity<String> handleConstraintViolationException(ConstraintViolationException e) {
-		return new ResponseEntity<>("nombre del método y parametros erroneos: " + e.getMessage(),
-				HttpStatus.BAD_REQUEST);
-	}
+    @ExceptionHandler(ConstraintViolationException.class)
+    ResponseEntity<String> handleConstraintViolationException(ConstraintViolationException e) {
+        return new ResponseEntity<>("nombre del método y parametros erroneos: " + e.getMessage(),
+                HttpStatus.BAD_REQUEST);
+    }
 
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
-		Map<String, String> errors = new HashMap<>();
-		ex.getBindingResult().getAllErrors().forEach((error) -> {
-			String fieldName = ((FieldError) error).getField();
-			String errorMessage = error.getDefaultMessage();
-			errors.put(fieldName, errorMessage);
-		});
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
 
-		return errors;
-	}
+        return errors;
+    }
+
+    @PostMapping("/producto/estado/{codigo}/{estado}")
+    public ProductoDTO cambiarEstadoSubasta(@Min(5) @PathVariable Integer codigo, @Min(5) @PathVariable String estado) {
+        ProductoDTO objProdu = null;
+        objProdu = gestorService.cambiarEstadoSubasta(codigo, estado);
+        return objProdu;
+    }
 }
